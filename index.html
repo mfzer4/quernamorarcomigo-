@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quer namorar comigo?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Pacifico', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: white;
+      text-shadow: 2px 2px 5px #d63384;
+      margin-bottom: 50px;
+    }
+
+    .buttons {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+
+    button {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.2rem;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #yesBtn:hover {
+      background-color: #45a049;
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    #noBtn {
+      background-color: #ff4d4d;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #noBtn:hover {
+      background-color: #e60000;
+    }
+
+    .resposta {
+      font-size: 2rem;
+      color: white;
+      text-shadow: 1px 1px 3px #000;
+      display: none;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .buttons {
+        width: 200px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quer namorar comigo? 💘</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">Sim 😍</button>
+    <button id="noBtn">Não 😢</button>
+  </div>
+
+  <div class="resposta" id="resposta">
+    já passa a senha do instagram, amor! 😘
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const container = document.querySelector('.buttons');
+    const resposta = document.getElementById('resposta');
+    const yesBtn = document.getElementById('yesBtn');
+
+    function moveNoButton() {
+      const x = Math.random() * (container.clientWidth - noBtn.clientWidth);
+      const y = Math.random() * (container.clientHeight - noBtn.clientHeight);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
+
+    noBtn.addEventListener('mouseenter', moveNoButton);
+    noBtn.addEventListener('click', moveNoButton); // ainda mais segurança hehe
+
+    yesBtn.addEventListener('click', () => {
+      document.querySelector('h1').textContent = '💖 Siiiiim 💖';
+      document.querySelector('.buttons').style.display = 'none';
+      resposta.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
